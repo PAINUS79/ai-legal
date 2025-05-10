@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Legal Chatbot - AI Legal Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #1e40af;
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    nav a {
+      color: #a5b4fc;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover, nav a:focus {
+      color: #c7d2fe;
+      outline: none;
+    }
+    main {
+      flex-grow: 1;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    footer {
+      background-color: #1e40af;
+      color: #c7d2fe;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <img src="https://cdn.pixabay.com/photo/2017/06/10/07/18/artificial-intelligence-2383013_1280.png" alt="AI Gavel Logo" class="h-12 w-12" />
+      <h1 class="text-white text-3xl font-extrabold tracking-tight">Legal Chatbot</h1>
+    </div>
+    <nav>
+      <ul class="flex space-x-8 text-lg">
+        <li><a href="#chat" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400 rounded">Chat</a></li>
+        <li><a href="#pricing" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400 rounded">Pricing</a></li>
+        <li><a href="#contact" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400 rounded">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="text-center py-16">
+      <h2 class="text-4xl font-extrabold mb-4 text-indigo-900">Your AI Legal Assistant</h2>
+      <p class="text-lg max-w-3xl mx-auto text-indigo-700 mb-8">Get instant legal advice, draft contracts, and explore legal loopholes with our intelligent chatbot.</p>
+      <a href="#chat" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg shadow-lg hover:bg-indigo-700 transition">Start Chatting</a>
+    </section>
+
+    <section id="us-map-container" class="bg-white rounded-2xl shadow-xl p-8 mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-indigo-900">Select Your State</h2>
+      <div id="us-map" class="w-full h-[500px] border border-indigo-300 rounded-2xl shadow-inner mb-8 transition-shadow hover:shadow-2xl"></div>
+      <div id="state-info" class="min-h-[140px] bg-indigo-100 rounded-2xl p-8 text-indigo-900 shadow-inner transition-all duration-500 ease-in-out"></div>
+    </section>
+
+    <section id="chat" class="bg-white rounded-2xl shadow-xl p-8 mb-16 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-indigo-900">Ask your legal questions</h2>
+      <div id="chatMessages" class="flex flex-col space-y-4 h-96 overflow-y-auto border border-gray-300 rounded-lg p-6 mb-6 bg-gray-50"></div>
+      <form id="chatForm" class="flex space-x-4">
+        <input
+          id="chatInput"
+          type="text"
+          placeholder="Type your question here..."
+          class="flex-grow border border-indigo-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-indigo-400"
+          aria-label="Chat input"
+          required
+        />
+        <button
+          type="submit"
+          class="bg-indigo-700 text-white px-8 py-3 rounded-lg shadow-lg hover:bg-indigo-800 transition"
+          aria-label="Send message"
+        >
+          Send
+        </button>
+      </form>
+      <div id="usageInfo" class="mt-2 text-sm text-indigo-600"></div>
+    </section>
+
+    <section id="pricing" class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-8 mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-indigo-900">Subscription Plans & Pay-Per-Use</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="border border-indigo-300 rounded-2xl p-6 flex flex-col shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-4">Basic</h3>
+          <p class="mb-6 text-indigo-700">Up to 100 questions and examples per month</p>
+          <p class="text-3xl font-extrabold mb-6">$9.99 <span class="text-lg font-normal">/ month</span></p>
+          <button class="mt-auto bg-indigo-700 text-white py-3 rounded-lg shadow hover:bg-indigo-800 transition">Subscribe</button>
+        </div>
+        <div class="border border-indigo-300 rounded-2xl p-6 flex flex-col shadow-md bg-indigo-50 hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-4">Pro</h3>
+          <p class="mb-6 text-indigo-700">Up to 500 actual writing services per month</p>
+          <p class="text-3xl font-extrabold mb-6">$29.99 <span class="text-lg font-normal">/ month</span></p>
+          <button class="mt-auto bg-indigo-700 text-white py-3 rounded-lg shadow hover:bg-indigo-800 transition">Subscribe</button>
+        </div>
+        <div class="border border-indigo-300 rounded-2xl p-6 flex flex-col shadow-md hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-4">Enterprise</h3>
+          <p class="mb-6 text-indigo-700">Templates for case writing, contracts, and legal aide work for entrepreneurs</p>
+          <p class="text-3xl font-extrabold mb-6">Contact us</p>
+          <button class="mt-auto bg-indigo-700 text-white py-3 rounded-lg shadow hover:bg-indigo-800 transition">Contact Sales</button>
+        </div>
+      </div>
+      <div class="mt-10 border-t border-indigo-300 pt-8">
+        <h3 class="text-2xl font-bold mb-4">Pay-Per-Use</h3>
+        <p class="mb-4 text-indigo-700">For occasional users or additional queries beyond subscription limits.</p>
+        <p class="text-3xl font-extrabold mb-6">$0.10 per query</p>
+        <button class="bg-indigo-700 text-white py-3 px-6 rounded-lg shadow hover:bg-indigo-800 transition">Buy Credits</button>
+      </div>
+    </section>
+
+    <section id="contact" class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8 mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-indigo-900">Contact Us</h2>
+      <p class="mb-6 text-indigo-700">For inquiries or support, please email us at <a href="mailto:support@legalchatbot.com" class="text-indigo-700 underline hover:text-indigo-900">support@legalchatbot.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="bg-indigo-900 text-indigo-200 py-6 text-center text-sm select-none">
+      &copy; 2024 Legal Chatbot. All rights reserved.
+    </div>
+  </footer>
+
+  <script type="module">
+    import { locationData } from './location-data.js';
+    import { legalLoopholes } from './legal-loopholes.js';
+    import { USMap } from './us-map.js';
+
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+    const usageInfo = document.getElementById('usageInfo');
+
+    let selectedState = null;
+    let selectedCounty = null;
+    let selectedTown = null;
+
+    // Create county and town selectors dynamically
+    const locationSelectorsContainer = document.createElement('div');
+    locationSelectorsContainer.className = 'mt-6 space-y-6 max-w-6xl mx-auto';
+    document.getElementById('state-info').after(locationSelectorsContainer);
+
+    function createSelector(labelText, options, onChange) {
+      const container = document.createElement('div');
+      container.className = 'mb-4';
+
+      const label = document.createElement('label');
+      label.textContent = labelText;
+      label.className = 'block mb-2 font-semibold text-indigo-900';
+      container.appendChild(label);
+
+      const select = document.createElement('select');
+      select.className = 'w-full border border-indigo-300 rounded-lg p-3 focus:outline-none focus:ring-4 focus:ring-indigo-400';
+      select.innerHTML = '<option value="">Select...</option>';
+      options.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        select.appendChild(option);
+      });
+      select.addEventListener('change', (e) => onChange(e.target.value));
+      container.appendChild(select);
+
+      return container;
+    }
+
+    function updateLocationSelectors() {
+      locationSelectorsContainer.innerHTML = '';
+
+      if (selectedState) {
+        const counties = Object.keys(locationData[selectedState]);
+        const countySelector = createSelector('Select County', counties, (county) => {
+          selectedCounty = county;
+          selectedTown = null;
+          updateLocationSelectors();
+          updateTemplates();
+        });
+        locationSelectorsContainer.appendChild(countySelector);
+      }
+
+      if (selectedCounty) {
+        const towns = locationData[selectedState][selectedCounty];
+        const townSelector = createSelector('Select Town', towns, (town) => {
+          selectedTown = town;
+          updateTemplates();
+        });
+        locationSelectorsContainer.appendChild(townSelector);
+      }
+    }
+
+    function updateTemplates() {
+      console.log('Selected location:', selectedState, selectedCounty, selectedTown);
+    }
+
+    // Initialize US Map
+    const usMap = new USMap('us-map', locationData, (stateId) => {
+      selectedState = usMap.getStateName(stateId);
+      selectedCounty = null;
+      selectedTown = null;
+      updateLocationSelectors();
+      updateTemplates();
+    });
+
+    // Placeholder usage tracking
+    let usageCount = 0;
+    const subscriptionLimit = 100;
+
+    function addMessage(message, sender = 'user') {
+      const messageElem = document.createElement('div');
+      messageElem.classList.add('chat-message', 'p-3', 'rounded', sender === 'user' ? 'bg-indigo-700 text-white self-end' : 'bg-gray-300 text-gray-900 self-start');
+      messageElem.textContent = message;
+      chatMessages.appendChild(messageElem);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function sendToDeepseek(userInput) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("This is a simulated response from the legal assistant AI based on your query: " + userInput);
+        }, 1500);
+      });
+    }
+
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userInput = chatInput.value.trim();
+      if (!userInput) return;
+
+      addMessage(userInput, 'user');
+      chatInput.value = '';
+      usageCount++;
+
+      if (usageCount > subscriptionLimit) {
+        addMessage("You have exceeded your subscription query limit. Please purchase pay-per-use credits or upgrade your plan.", 'bot');
+        usageInfo.textContent = `Usage: ${usageCount} queries (Limit exceeded)`;
+        return;
+      }
+
+      usageInfo.textContent = `Usage: ${usageCount} / ${subscriptionLimit} queries`;
+
+      const response = await sendToDeepseek(userInput);
+      addMessage(response, 'bot');
+    });
+
+    // Premium feature: Show legal loopholes advice for Pro and Enterprise users
+    function showLegalLoopholes() {
+      const userSubscription = 'Pro';
+
+      if (userSubscription === 'Pro' || userSubscription === 'Enterprise') {
+        const loopholesContainer = document.createElement('section');
+        loopholesContainer.className = 'max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-8 mb-16';
+        loopholesContainer.innerHTML = '<h2 class="text-3xl font-bold mb-6 text-indigo-900">Legal Loopholes Advice</h2>';
+
+        legalLoopholes.forEach(loophole => {
+          const loopholeDiv = document.createElement('div');
+          loopholeDiv.className = 'mb-8 border border-indigo-300 rounded-2xl p-6 bg-indigo-50 shadow-inner';
+          loopholeDiv.innerHTML = `
+            <h3 class="text-xl font-semibold mb-3">${loophole.title}</h3>
+            <p class="mb-4 text-indigo-700">${loophole.description}</p>
+            <ul class="list-disc list-inside text-indigo-600">${loophole.examples.map(ex => '<li>' + ex + '</li>').join('')}</ul>
+          `;
+          loopholesContainer.appendChild(loopholeDiv);
+        });
+
+        const footer = document.querySelector('footer');
+        footer.parentNode.insertBefore(loopholesContainer, footer);
+      }
+    }
+
+    showLegalLoopholes();
+  </script>
+</body>
+</html>
